@@ -1,4 +1,6 @@
 use std::env;
+use std::fs::File;
+use std::io::prelude::*;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -9,4 +11,11 @@ fn main() {
 
     println!("Provided query: {}", query);
     println!("Filename to search in: {}", filename);
+
+    let mut f = File::open(filename).expect("File not found!");
+
+    let mut contents = String::new();
+    f.read_to_string(&mut contents).expect("Failed during reading file!");
+
+    println!("File content: {}", contents);
 }

@@ -6,8 +6,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
 
-    let query = &args[1];
-    let filename = &args[2];
+    let (query, filename) = parse_args(&args);
 
     println!("Provided query: {}", query);
     println!("Filename to search in: {}", filename);
@@ -17,5 +16,13 @@ fn main() {
     let mut contents = String::new();
     f.read_to_string(&mut contents).expect("Failed during reading file!");
 
-    println!("File content: {}", contents);
+    println!("File content:\n{}", contents);
+}
+
+
+fn parse_args(args: &[String]) -> (&str, &str) {
+    let query = &args[1];
+    let filename = &args[2];
+
+    (query, filename)
 }

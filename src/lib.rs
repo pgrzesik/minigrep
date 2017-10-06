@@ -51,9 +51,17 @@ mod test {
     use super::*;
 
     #[test]
-    fn one_result() {
+    fn case_sensitive() {
+        let query = "Some query";
+        let content = "some content\nSome query in line\nand one more";
+
+        assert_eq!(vec!["Some query in line"], search(query, content));
+    }
+
+    #[test]
+    fn case_insensitive() {
         let query = "some query";
-        let content = "some content\nsome query in line\nand one more";
+        let content = "some content\nSome query in line\nand one more";
 
         assert_eq!(vec!["some query in line"], search(query, content));
     }

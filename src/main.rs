@@ -12,7 +12,10 @@ fn main() {
         process::exit(1)
     });
 
-    run(config);
+    if let Err(e) = run(config) {
+        println!("During application execution, following error occured: {}", e);
+        process::exit(1)
+    }
 }
 
 fn run(config: Config) -> Result<(), Box<Error>> {

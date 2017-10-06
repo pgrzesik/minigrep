@@ -31,3 +31,17 @@ impl Config {
         Ok(Config { query, filename })
     }
 }
+
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "some query";
+        let content = "some content\nsome query in line\nand one more";
+
+        assert_eq!(vec!["some query in line"], search(query, content));
+    }
+}

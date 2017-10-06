@@ -11,9 +11,10 @@ fn main() {
         process::exit(1)
     });
 
-    println!("Provided query: {}", config.query);
-    println!("Filename to search in: {}", config.filename);
+    run(config);
+}
 
+fn run(config: Config) {
     let mut f = File::open(config.filename).expect("File not found!");
 
     let mut contents = String::new();

@@ -32,6 +32,9 @@ impl Config {
     }
 }
 
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    vec![]
+}
 
 #[cfg(test)]
 mod test {
